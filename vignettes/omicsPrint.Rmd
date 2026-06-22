@@ -268,13 +268,17 @@ download.file("ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE100nnn/GSE100940/matrix/
 gset <- getGEO(filename=file, getGPL=FALSE)
 ```
 
-Next we convert the returned object into a 
-[*SummarizedExperiment*](http://bioconductor.org/packages/SummarizedExperiment/):
+Dependending on your version of `GEOquery`, `getGEO` might already return
+a `SummarizedExperiment` object. If not, then following code can be used to
+convert it into a [*SummarizedExperiment*](http://bioconductor.org/packages/SummarizedExperiment/):
 
-	
-```{r geo2se}
+```{r geo2se, eval=FALSE}
 se <- makeSummarizedExperimentFromExpressionSet(gset)
 se
+```
+
+```{r rename_to_se, include=FALSE}
+se <- gset
 ```
 
 	
